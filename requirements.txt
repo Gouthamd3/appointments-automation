@@ -1,0 +1,11 @@
+Flask==3.0.0
+supabase==2.30.1
+supafunc==0.10.2
+python-dotenv==1.2.2
+twilio==8.10.0
+gunicorn==26.0.0
+httpx==0.28.1
+httpcore==1.0.9
+websockets==12.0
+# The supabase package will pull in its required subpackages (postgrest, realtime, storage3, supabase-auth, etc.)
+# Keep the list minimal to avoid including dev/jupyter packages in deployment

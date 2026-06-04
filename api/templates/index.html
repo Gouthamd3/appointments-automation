@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header-section">
+            <h1>Appointment Booking</h1>
+            {% if message %}
+                <div class="message-box">{{ message }}</div>
+            {% endif %}
+        </header>
+
+        <!-- booking section -->
+        <section class="section">
+            <h2>Book New Appointment</h2>
+            <form action="/book" method="POST" class="form">
+                <div class="form-inputs">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <input type="datetime-local" name="time" required>
+                </div>
+                <button type="submit" class="btn primary-btn">Book Appointment</button>
+            </form>
+        </section>
+
+        <!-- appointments display -->
+        <section class="section">
+            <div class="header-with-button">
+                <h2>Your Appointments</h2>
+                <div class="sort-buttons">
+                    {% if current_sort == 'asc' %}
+                        <a href="/?sort=desc" class="btn outline-btn">Show Newest First</a>
+                    {% else %}
+                        <a href="/?sort=asc" class="btn outline-btn">Show Oldest First</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <form action="/bulk_delete" method="POST" class="appointments-form">
+                <div class="bulk-delete-btn-container">
+                    <button type="submit" class="btn danger-btn">Delete Checked</button>
+                </div>
+
+                <div class="appointments-container">
+                    {% if appointments %}
+                        {% for appointment in appointments %}
+                            <div class="appointment-item">
+                                <div class="check">
+                                    <input type="checkbox" name="appointment_ids" value="{{ appointment.id }}">
+                                </div>
+                                
+                                <div class="appointment-details">
+                                    <p class="name-text">{{ appointment.name }}</p>
+                                    <p class="phone-text">{{ appointment.phone }}</p>
+                                    <p class="time-text">
+                                        📅 {{ appointment.appointment_time.replace('T', ' ') }}
+                                    </p>
+                                </div>
+
+                                <div class="status-badges">
+                                    {% if appointment.message_sent %}
+                                        <span class="badge green-badge">SMS Sent</span>
+                                    {% else %}
+                                        <span class="badge red-badge">SMS Failed</span>
+                                    {% endif %}
+
+                                    {% if appointment.reminder_sent %}
+                                        <span class="badge green-badge">Reminded</span>
+                                    {% else %}
+                                        <span class="badge yellow-badge">Waiting</span>
+                                    {% endif %}
+                                </div>
+
+                                <div class="delete-section">
+                                    <form action="/delete/{{ appointment.id }}" method="POST" class="delete-form">
+                                        <button type="submit" class="btn delete-btn">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-appointments">No appointments yet</p>
+                    {% endif %}
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

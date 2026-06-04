@@ -1,0 +1,276 @@
+:root {
+    --blue: #2563eb;
+    --blue-dark: #1d4ed8;
+    --red: #ef4444;
+    --red-dark: #dc2626;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --border-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--bg);
+    color: var(--dark);
+    padding: 2rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header-section {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.message-box {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.section {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-inputs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input[type="tel"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input[type="datetime-local"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.primary-btn {
+    background: var(--blue);
+    color: white;
+}
+
+.primary-btn:hover {
+    background: var(--blue-dark);
+}
+
+.danger-btn {
+    background: var(--red);
+    color: white;
+}
+
+.danger-btn:hover {
+    background: var(--red-dark);
+}
+
+.outline-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.outline-btn:hover {
+    background: var(--bg);
+}
+
+.delete-btn {
+    background: var(--red);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.delete-btn:hover {
+    background: var(--red-dark);
+}
+
+.header-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.bulk-delete-btn-container {
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.appointments-form:has(input[type="checkbox"]:checked) .bulk-delete-btn-container {
+    display: block;
+}
+
+.appointments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: box-shadow 0.2s;
+}
+
+.appointment-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.check {
+    padding-right: 1rem;
+}
+
+.check input {
+    cursor: pointer;
+}
+
+.appointment-details {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.name-text {
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.phone-text {
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+.time-text {
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.status-badges {
+    flex: 2;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.green-badge {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.red-badge {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.yellow-badge {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.delete-section {
+    flex: 0;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.no-appointments {
+    text-align: center;
+    color: var(--gray);
+    padding: 2rem;
+}
+

@@ -1,2 +1,2 @@
-# appointments-automation
-as simple sms automation for appointments booking
+# appointments-booking
+An automation of sms for appointments
